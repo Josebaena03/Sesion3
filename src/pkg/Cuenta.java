@@ -10,16 +10,15 @@ public class Cuenta {
     public Cuenta(String numero, double saldoInicial) {
         this.numero = numero;
         this.movimientos = new ArrayList<>();
-        // El saldo inicial se registra como el primer movimiento
         if (saldoInicial > 0) {
-            this.movimientos.add(new Movimiento(saldoInicial, "H"));
+            this.movimientos.add(new Movimiento(saldoInicial, TipoSignoMovimiento.H));
         }
     }
 
     public double getSaldo() {
         double saldoCalculado = 0.0;
         for (Movimiento m : this.movimientos) {
-            if (m.getSigno().equals("H")) {
+            if (m.getSigno() == TipoSignoMovimiento.H) {
                 saldoCalculado += m.getImporte();
             } else {
                 saldoCalculado -= m.getImporte();

@@ -2,9 +2,9 @@ package pkg;
 
 public class Movimiento {
     private double importe;
-    private String signo; // "H" (Haber, ingreso) o "D" (Debe, reintegro)
+    private TipoSignoMovimiento signo;
 
-    public Movimiento(double importe, String signo) {
+    public Movimiento(double importe, TipoSignoMovimiento signo) {
         this.importe = importe;
         this.signo = signo;
     }
@@ -13,7 +13,7 @@ public class Movimiento {
         return importe;
     }
 
-    public String getSigno() {
+    public TipoSignoMovimiento getSigno() {
         return signo;
     }
 }
