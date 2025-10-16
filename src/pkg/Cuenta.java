@@ -26,4 +26,16 @@ public class Cuenta {
         }
         return saldoCalculado;
     }
+    
+    public void ingresar(double cantidad) {
+        this.movimientos.add(new Movimiento(cantidad, TipoSignoMovimiento.H));
+    }
+    public void retirar(double cantidad) {
+        final double LIMITE_DESCUBIERTO = -500.0;  
+        if ((getSaldo() - cantidad) >= LIMITE_DESCUBIERTO) {
+            this.movimientos.add(new Movimiento(cantidad, TipoSignoMovimiento.D));
+        } else {     
+            throw new IllegalArgumentException("Fondos insuficientes. Se supera el límite de descubierto.");
+        }
+    }
 }
